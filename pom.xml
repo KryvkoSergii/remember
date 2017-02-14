@@ -19,6 +19,7 @@
         <project.SPRING>4.2.5.RELEASE</project.SPRING>
         <project.SERVLET>3.1.0</project.SERVLET>
         <project.JACKSON>2.7.3</project.JACKSON>
+        <project.log4j>1.2.17</project.log4j>
     </properties>
 
     <build>
@@ -87,6 +88,12 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
             <version>${project.JACKSON}</version>
+        </dependency>
+        <!--LOGGER-->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${project.log4j}</version>
         </dependency>
     </dependencies>
 </project>

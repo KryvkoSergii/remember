@@ -1,7 +1,8 @@
 package ua.com.smiddle.remember.core.web;
 
+import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.*;
-import ua.com.smiddle.remember.core.model.*;
+import ua.com.smiddle.remember.core.model.Wrapper;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletResponse;
@@ -16,11 +17,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/rest-api")
 public class RESTController {
-    private volatile String value;
+//    private volatile String value;
+    private static final Logger logger = Logger.getLogger(RESTController.class);
 
     @PostConstruct
     private void init() {
-        value = "";
+//        value = "";
     }
 
     @CrossOrigin
@@ -44,17 +46,16 @@ public class RESTController {
             resultValue.add(value[1]);
         }
 
-        if (request == null) {
-            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            return;
-        }
-
+        String s;
         for (int i = 0; i < resultName.size(); i++) {
             if (i % 6 == 0) {
                 System.out.println();
                 System.out.println("-----------------------------------");
+                logger.info('\n' + "-----------------------------------");
             }
-            System.out.print(resultName.get(i) + ": " + resultValue.get(i) + ", ");
+            s = resultName.get(i) + ": " + resultValue.get(i) + ", ";
+            System.out.print(s);
+            logger.info(s);
         }
         //System.out.println(request.toString());
         //System.out.println("RESTController: setValue: set value=");
@@ -63,6 +64,7 @@ public class RESTController {
     @CrossOrigin
     @RequestMapping(value = "/value", method = RequestMethod.GET, produces = "application/json; charset=UTF-8")
     public Object getValue(HttpServletResponse response) {
+        logger.info("getValue: got request");
         List<Wrapper> wrapperList = new ArrayList<>();
         wrapperList.add(new Wrapper(1234L, "2938", 3912L));
         wrapperList.add(new Wrapper(9876L, "9482", 8265L));
