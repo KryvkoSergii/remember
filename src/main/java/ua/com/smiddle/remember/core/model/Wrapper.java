@@ -8,12 +8,20 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  */
 @JsonIgnoreProperties
 public class Wrapper {
-    private String value;
-
+    private Long agentId;
+    private String ANI;
+    private Long scallId;
+    private Byte firstQuestion;
+    private Byte secondQuestion;
+    private Byte thirdQuestion;
 
     //Constructors
-    public Wrapper(String value) {
-        this.value = value;
+
+
+    public Wrapper(Long agentId, String ANI, Long scallId) {
+        this.agentId = agentId;
+        this.ANI = ANI;
+        this.scallId = scallId;
     }
 
     public Wrapper() {
@@ -21,20 +29,37 @@ public class Wrapper {
 
 
     //Getters and setters
-    public String getValue() {
-        return value;
+
+
+    public Long getAgentId() {
+        return agentId;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setAgentId(Long agentId) {
+        this.agentId = agentId;
     }
 
+    public String getANI() {
+        return ANI;
+    }
+
+    public void setANI(String ANI) {
+        this.ANI = ANI;
+    }
+
+    public Long getScallId() {
+        return scallId;
+    }
+
+    public void setScallId(Long scallId) {
+        this.scallId = scallId;
+    }
 
     //Methods
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Wrapper{");
-        sb.append("value='").append(value).append('\'');
+        sb.append("value='").append(agentId).append('\'');
         sb.append('}');
         return sb.toString();
     }
